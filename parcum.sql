@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `parksome`.`location` (
   `civic_address_2` VARCHAR(45) NULL,
   `civic_address_3` VARCHAR(45) NULL,
   `latitude` DOUBLE NULL,
-  `longtitude` DOUBLE NULL,
+  `longitude` DOUBLE NULL,
   `altitude` DOUBLE NULL,
   PRIMARY KEY (`location_id`))
 ENGINE = InnoDB;
