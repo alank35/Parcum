@@ -1,0 +1,1 @@
+docker run --name dbbackend -v /home/ubuntu/dbdir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=dbpass -d mysql:5.7

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<title>This is a title</title> 
+<meta name="description" content="a dabase potato" />
+</head>
+<body>
+
+<h1>ParkingDB management</h1>
+
+<p>Add parking place</p>
+<!--<form class="pure-form graybox" id="latlongform">-->
+<form method="post" actions="/">
+Parking name: <input type="text" name="garage_name"> <br />
+<label for="addr1">Street nr:</label> 
+<input id="addr1" type="text" name="addr1" placeholder="somestreet 4" required /> <br />
+<label for"addr2">Zip city:</label>
+<input id="addr2" type="text" name="addr2" placeholder="12345 gotham" required /> <br />
+<label for="addr3">country:</label> 
+<input id="addr3" type="text" name="addr3" placeholder="sverige" required /> <input type="button" value="fetch geo coordinates" onclick="codeAddress();"</input> <br />
+<br />
+<br />
+<br />
+<label for="lat">latitude:</label> 
+<input type="text" name="latitude" id="lat" placeholder="lat coord" /> <br />
+<label for="lng">longitude:</label>
+<input type="text" name="longitude" id="lng" placeholder="long coord" /> <br />
+altitude: <input type="text" name="altitude"> <br>
+Garage type: <select> 
+		<option value="Indoor">"Indoor"</option>
+		<option value="Outdoor">"Outdoor"</option>
+		<option value="Street">"Street"</option>
+             </select>
+Garage provider: <select>
+		<option value="Private">"Private"</option>
+		<option value="Public">"Public"</option>
+	     </select>
+Cost: <select>
+       <option value="Paid">"Paid"</option>
+       <option value="Free">"Free"</option>
+     </select>
+<br>
+<input type="submit" value="Submit">
+</form>
+<p>Click the "Submit" button to store data</p>
+
+<!--
+<script type="type/javascript">
+$(document).ready(function() {
+    
+    $(document).on('submit','#latlongform',function(){
+        codeAddress();
+        
+        return false;
+    });
+
+});
+-->
+</script>
+<script type="text/javascript">
+  var geocoder;
+
+  function initialize() {
+      geocoder = new google.maps.Geocoder();
+  }
+
+  function codeAddress() {
+      var address = document.getElementById("addr1").value + ',' +
+                    document.getElementById("addr2").value + ',' +
+                    document.getElementById("addr3").value;
+      if (address == '') {
+        alert("Address field empty!");
+        return;
+      }
+      geocoder.geocode({'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+             document.getElementById('lat').value = results[0].geometry.location.lat().toFixed(6);
+             document.getElementById('lng').value = results[0].geometry.location.lng().toFixed(6);
+          } else {
+             alert("Geodata can not be found.");
+          }
+      });
+  }
+
+  function loadScript() {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+<!--
+      script.src  = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCeMmI5yzLcROnuDhn3PeSMpikvMUNuHeQ&' +
+                   'callback=initialize';
+-->
+      script.src  = 'https://maps.googleapis.com/maps/api/js?sensor=false&' +
+                   'callback=initialize';
+      document.body.appendChild(script);
+  }
+
+  window.onload = loadScript;
+
+</script>
+   
+</body>
+</html>
+

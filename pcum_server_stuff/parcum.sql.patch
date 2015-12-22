@@ -1,0 +1,66 @@
+--- parcum.sql.orig	2015-11-02 23:11:38.523348709 +0000
++++ parcum.sql	2015-11-26 23:40:04.249861785 +0000
+@@ -12,12 +12,12 @@
+ DROP TABLE IF EXISTS `parksome`.`location` ;
+ 
+ CREATE TABLE IF NOT EXISTS `parksome`.`location` (
+-  `location_id` INT NOT NULL,
++  `location_id` INT NOT NULL AUTO_INCREMENT,
+   `civic_address_1` VARCHAR(45) NULL,
+   `civic_address_2` VARCHAR(45) NULL,
+   `civic_address_3` VARCHAR(45) NULL,
+   `latitude` DOUBLE NULL,
+-  `longtitude` DOUBLE NULL,
++  `longitude` DOUBLE NULL,
+   `altitude` DOUBLE NULL,
+   PRIMARY KEY (`location_id`))
+ ENGINE = InnoDB;
+@@ -43,7 +43,7 @@
+ DROP TABLE IF EXISTS `parksome`.`garage` ;
+ 
+ CREATE TABLE IF NOT EXISTS `parksome`.`garage` (
+-  `garage_id` INT NOT NULL,
++  `garage_id` INT NOT NULL AUTO_INCREMENT,
+   `garage_name` VARCHAR(255) NULL,
+   `location_id` INT NULL,
+   `garage_type_id` INT NULL,
+@@ -88,7 +88,7 @@
+ 
+ CREATE TABLE IF NOT EXISTS `parksome`.`rates` (
+   `rate_type_id` INT NULL,
+-  `rate_id` INT NOT NULL,
++  `rate_id` INT NOT NULL AUTO_INCREMENT,
+   PRIMARY KEY (`rate_id`))
+ ENGINE = InnoDB;
+ 
+@@ -99,7 +99,7 @@
+ DROP TABLE IF EXISTS `parksome`.`rate_types` ;
+ 
+ CREATE TABLE IF NOT EXISTS `parksome`.`rate_types` (
+-  `rate_type_id` INT NOT NULL,
++  `rate_type_id` INT NOT NULL AUTO_INCREMENT,
+   `rate_type_desc` VARCHAR(50) NULL,
+   PRIMARY KEY (`rate_type_id`))
+ ENGINE = InnoDB;
+@@ -123,10 +123,10 @@
+ CREATE TABLE IF NOT EXISTS `parksome`.`users` (
+   `username` VARCHAR(16) NOT NULL,
+   `email` VARCHAR(255) NULL,
+-  `password` VARCHAR(32) NOT NULL,
++  `password` VARCHAR(45) NOT NULL,
+   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+   `role_id` VARCHAR(45) NULL,
+-  `user_id` INT NOT NULL,
++  `user_id` INT NOT NULL AUTO_INCREMENT,
+   PRIMARY KEY (`user_id`));
+ 
+ 
+@@ -136,7 +136,7 @@
+ DROP TABLE IF EXISTS `parksome`.`roles` ;
+ 
+ CREATE TABLE IF NOT EXISTS `parksome`.`roles` (
+-  `role_id` INT NOT NULL,
++  `role_id` INT NOT NULL AUTO_INCREMENT,
+   `role_name` VARCHAR(45) NULL,
+   PRIMARY KEY (`role_id`))
+ ENGINE = InnoDB;

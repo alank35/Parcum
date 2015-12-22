@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#docker run -a stdin -a stdout -i --link dbbackend:mysql mysql-client mysql -uparcum -pparcum -hdbbackend parksome
+docker run -i --link dbbackend:mysql --rm mysql mysql -u parcum -pmucrap --protocol=tcp -hdbbackend parksome < $1

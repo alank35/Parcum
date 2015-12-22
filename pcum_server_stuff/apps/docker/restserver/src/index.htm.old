@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>ParkingDB management</h1>
+
+<p>Add parking place</p>
+<form method="post" actions="/">
+p-hus namn: <input type="text" name="garage_name"> <br>
+address line1: <input type="text" name="addr1"> <br>
+address line2: <input type="text" name="addr2"> <br>
+address line3: <input type="text" name="addr3"> <br>
+latitude: <input type="text" name="latitude"> <br>
+longitude: <input type="text" name="longitude"> <br>
+altitude: <input type="text" name="altitude"> <br>
+Garage type: <select> 
+		<option value="Indoor">"Indoor"</option>
+		<option value="Outdoor">"Outdoor"</option>
+		<option value="Street">"Street"</option>
+             </select>
+Garage provider: <select>
+		<option value="Private">"Private"</option>
+		<option value="Public">"Public"</option>
+	     </select>
+Cost: <select>
+       <option value="Paid">"Paid"</option>
+       <option value="Free">"Free"</option>
+     </select>
+<br>
+<input type="submit" value="Submit">
+</form>
+<p>Click the "Submit" button to store data</p>
+
+
+</body>
+</html>
+
