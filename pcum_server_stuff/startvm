@@ -1,0 +1,1 @@
+qemu-kvm -m 512 -redir :8080::49160 -redir :8090::80 -redir :8022::22 ubuntu-15.04-snappy-amd64-generic.img
